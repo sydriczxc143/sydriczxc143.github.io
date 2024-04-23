@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milktea by JCFP</title>
+    <style>
+        body {
+            font-family: 'Brush Script MT', cursive;
+            background-color: #f9e1e1; /* Soft pink background */
+            color: #000; /* Black text */
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s; /* Smooth background color transition */
+        }
+        header {
+            background-color: #FFD3E0; /* Darker pink header */
+            padding: 50px;
+            text-align: right;
+            position: fixed; /* Fixed position for sticky header */
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Ensure header stays above other content */
+            transition: background-color 0.5s; /* Smooth background color transition */
+        }
+        header a {
+            transition: color 0.3s;
+            text-decoration: none;
+            color: #000; /* Black link */
+            padding: 5px 10px;
+            border: 1px solid #000; /* Black border */
+            border-radius: 5px;
+            margin-right: 10px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth color transition */
+        }
+		header a.active {
+            color: #ffcccc;
+		}
+        header a:hover {
+            background-color: #ffcccc; /* Light pink hover */
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 80px; /* Adjust padding to prevent content from being hidden under sticky header */
+            transition: padding-top 0.5s; /* Smooth transition for padding */
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+        }
+        .banner {
+            width: 70%;
+            margin-top: 90px;
+        }
+        h1 {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 36px;
+            margin-top: 20px; /* Adjusted margin */
+        }
+        p {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #000000; /* Black text color */
+        }
+.product {
+    margin-top: 20px;
+    display: inline-block;
+    width: calc(33.33% - 20px); /* Adjusted width for 3 boxes in a row */
+    border: 2px solid #000; /* Black border */
+    border-radius: 10px;
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+        .product:hover {
+            transform: scale(1.05); /* Enlarge the product on hover */
+        }
+        .product img {
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out; /* Smooth transition */
+        }
+		
+		body {
+            background-image: url('blurry_background.jpg'); /* Added blurry background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+		}
+        .product:hover img {
+		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: scale(1.1); /* Enlarge the image on hover */
+        }
+        .order-btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            width: 80%;
+            margin: 0 auto;
+            transition: background-color 0.3s, color 0.3s; /* Smooth color transition */
+        }
+        .order-btn:hover {
+			transform: scale(1.1);
+            background-color: #333;
+        }
+        .quick-links {
+            margin-top: 50px;
+            color: #000; /* Black text color */
+        }
+        .quick-links a {
+            color: #000; /* Black text color */
+            text-decoration: none;
+            transition: color 0.3s; /* Smooth color transition */
+        }
+        .quick-links a:hover {
+            color: #fff; /* White text color on hover */
+        }
+#contact {
+    text-align: center;
+    padding: 50px 0;
+    position: relative; /* Add position relative to position the images */
+}
+
+.contact-info {
+    margin-bottom: 30px;
+    max-width: 600px; /* Limit the width of the contact info */
+    margin: 0 auto; /* Center the contact info */
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.contact-info form {
+    margin-top: 20px;
+    text-align: left; /* Align the form elements to the left */
+}
+
+.contact-info form label {
+	color: #000;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.contact-info form input[type="text"],
+.contact-info form input[type="email"],
+.contact-info form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.contact-info form textarea {
+    resize: vertical;
+}
+
+.contact-info form input[type="submit"] {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-info form input[type="submit"]:hover {
+    background-color: #333;
+}
+
+.contact-image-left,
+.contact-image-right {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 450px; /* Increase the width of the images */
+    height: auto; /* Automatically adjust height */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+        .contact-info {
+            margin-top: 50px;
+            text-align: left;
+            color: #fff; /* White text color */
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .contact-info a {
+            color: #fff; /* White text color */
+            text-decoration: none;
+            transition: color 0.3s; /* Smooth color transition */
+        }
+        .contact-info a:hover {
+            color: #ffcccc; /* Light pink hover color */
+        }
+        footer {
+            background-color: #333; /* Dark background color */
+            color: #fff; /* White text color */
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            margin-top: 50px;
+		}
+		footer p {
+            font-size: 12px;
+        }
+        footer .logo {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            width: 50px;
+        }
+        .about-section {
+            display: none;
+        }
+        .about-section.active {
+            display: block;
+        }
+		.about-image {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #000; /* Black border */
+    border-radius: 10px; /* Rounded corners */
+    margin: 10px; /* Add some margin for spacing */
+}
+
+        .about-images {
+		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+        .about-images img {
+            width: 30%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .about-images img:hover {
+		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+		        .divider {
+            width: 100px;
+            height: 3px;
+            background-color: #000;
+            margin: 20px auto;
+        }
+
+        /* Responsive design adjustments */
+        @media screen and (max-width: 768px) {
+            .product {
+                width: calc(100% - 40px); /* Adjusted width for 1 box in a row on smaller screens */
+            }
+            .about-images img {
+                width: 100%; /* Adjusted width for about images on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="milktea_logo.png" alt="Milktea by JCP Logo">
+        <a href="#home" onclick="showSection('home')">Home</a>
+        <a href="#menu" onclick="showSection('menu')">Menu</a>
+        <a href="#about" onclick="showSection('about')">About</a>
+        <a href="#contact">Contact</a>
+        <a id="order-now-btn" href="#order">Order Now!</a>
+
+    </header>
+    <div class="container">
+        <img class="banner" src="milktea_banner.jpg" alt="Banner Image">
+        <section id="home">
+            <h1>Welcome to Milktea by JCFP!</h1>
+			<div class="divider"></div>
+            <p>Delicious milk teas just for you!</p>
+            <div class="product">
+                <img src="special_series_milktea.jpg" alt="Special Series">
+            </div>
+            <div class="product">
+                <img src="frappe.jpg" alt="Frappe">
+            </div>
+			<h1>Special Series!</h1>
+			<div class="divider"></div>
+            <div class="product">
+                <img src="oreo_cheesecake.jpg" alt="Oreo Cheesecake">
+                <h2>Oreo Cheesecake</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+            <div class="product">
+                <img src="mermaid_creampuff.jpg" alt="Mermaid Creampuff">
+                <h2>Mermaid Creampuff</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+            <div class="product">
+                <img src="meiji_apollo.jpg" alt="Meiji Apollo">
+                <h2>Meiji Apollo</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+			<div class="product">
+                <img src="brown_sugar.jpg" alt="Brown Sugar Milktea">
+                <h2>Brown Sugar Milktea</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+			<div class="product">
+                <img src="charcoal_milktea.jpg" alt="Charcoal Milktea">
+                <h2>Charcoal Milktea</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+			<div class="product">
+                <img src="jc_cheesecake.jpg" alt="JC Cheesecake">
+                <h2>JC Cheescake</h2>
+                <p>For only: ₱110</p>
+                <button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+        </section>
+        <section id="menu" style="display: none;">
+            <h1>Menu</h1>
+			<div class="divider"></div>
+			<img src="menu.jpg" alt="Menu" style="border: 2px solid #000; width: 65%; height: auto;">
+
+            <h1>Special Series</h1>
+			<div class="divider"></div>
+            <div class="product">
+                <img src="oreo_cheesecake.jpg" alt="Oreo Cheesecake">
+                <h2>Oreo Cheesecake</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+            <div class="product">
+                <img src="mermaid_creampuff.jpg" alt="Mermaid Creampuff">
+                <h2>Mermaid Creampuff</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+            <div class="product">
+                <img src="meiji_apollo.jpg" alt="Meiji Apollo">
+                <h2>Meiji Apollo</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+			<div class="product">
+                <img src="brown_sugar.jpg" alt="Brown Sugar Milktea">
+                <h2>Brown Sugar Milktea</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+			<div class="product">
+                <img src="charcoal_milktea.jpg" alt="Charcoal Milktea">
+                <h2>Charcoal Milktea</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+			<div class="product">
+                <img src="jc_cheesecake.jpg" alt="JC Cheesecake">
+                <h2>JC Cheescake</h2>
+                <p>For only: ₱110</p>
+				<button class="order-btn" onclick="scrollToOrderNow()">Order Now!</button>
+            </div>
+        </section>
+        <section id="about" class="about-section">
+    <style>
+        .about-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .about-header h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-header .divider {
+            width: 80px;
+            height: 3px;
+            background-color: #000;
+            margin: 0 auto 20px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 24px;
+            margin-top: 40px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .signature {
+            font-style: italic;
+            margin-top: 40px;
+        }
+    </style>
+    <div class="about-header">
+        <h1>About Us</h1>
+		<div class="divider"></div>
+		<p>Hey there! We're the team behind Milktea by JCFP, and we're thrilled to share our story with you.</p>
+    </div>
+    <div class="about-images">
+        <img src="about_us2.jpg" alt="about_us2" class="about-image">
+        <img src="about_us.jpg" alt="about_us" class="about-image">
+        <img src="about_us3.jpg" alt="about_us3" class="about-image">
+    </div>
+    <div class="about-content">
+        <h2>Who We Are</h2>
+        <p>Milktea by JCFP isn't just a brand; it's the brainchild of Jason, Cathy, Food, and Products (JCFP). We're a passionate group of individuals who share a love for creating exceptional culinary experiences.</p>
+        <h2>Our Passion</h2>
+        <p>At Milktea by JCFP, we pour our hearts into every cup of milk tea we serve. From selecting the finest ingredients to crafting unique flavor combinations, we're dedicated to delivering a delightful taste adventure with every sip.</p>
+        <h2>Why Choose Us</h2>
+        <p>What sets us apart? It's our commitment to quality, innovation, and customer satisfaction. Whether you're craving a classic milk tea or feeling adventurous with one of our specialty blends, we've got something to tantalize your taste buds.</p>
+        <h2>Get in Touch</h2>
+        <p>Have a question or just want to say hello? We'd love to hear from you! Drop by our store or reach out to us via phone or email. We're here to make your milk tea experience extraordinary.</p>
+        <p class="signature">Thanks for being a part of the Milktea by JCFP family. Cheers to good times and great tea!</p>
+        <p class="signature">Jason, Cathy, Food, and Products (JCFP)</p>
+    </div>
+</section>
+<section id="contact" style="display: none;">
+    <div class="contact-info">
+        <p>We'd Love To Hear From You</p>
+        <p>Fields marked with an * are required</p>
+        <form id="contact-form">
+            <label for="name">Name *</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email *</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Message *</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</section>
+<section id="order" style="display: none;">
+    <img src="foodpanda.png" alt="Foodpanda Logo" width="150">
+    <p>Here’s MILKTEA by JCFP - Max Suniel St on foodpanda. Order Now!</p>
+    <a href="https://foodpanda.page.link/wUZJjXg1KEYwfNM4A">Order on Foodpanda</a>
+</section>
+
+
+		
+        <div class="quick-links">
+            <a href="#home">Home</a> |
+            <a href="#menu">Menu</a> |
+            <a href="#about">About</a> |
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+    <footer>
+        <div class="contact-info">
+            <p>Sumillano Bldg., Max Suniel St., Carmen, Cagayan de Oro City</p>
+            <p>in front of COC, beside 7/11, Cagayan de Oro, Philippines</p>
+            <p>Phone: <a href="tel:+639974335558">0997 433 5558</a></p>
+            <p>Email: <a href="mailto:jcfoodproductss@gmail.com">jcfoodproductss@gmail.com</a></p>
+            <p>Facebook: <a href="https://www.facebook.com/milkteabyjcfp">Milktea by JCFP</a></p>
+			
+        </div>
+        <img class="logo" src="milktea_logo.png" alt="Milktea by JCFP Logo">
+        &copy; 2024 Milktea by JCFP. All rights reserved.
+    </footer>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to show only the selected section with animation
+            function showSection(sectionId) {
+                var sections = document.querySelectorAll('section');
+                sections.forEach(function(section) {
+                    section.style.display = 'none';
+                });
+                var selectedSection = document.getElementById(sectionId);
+                selectedSection.style.display = 'block';
+                selectedSection.classList.add('animate-in'); // Add animation class
+            }
+
+            // Event listener for the "Order Now!" button
+            document.getElementById('order-now-btn').addEventListener('click', function() {
+                showSection('order');
+            });
+
+            // Event listeners for the navigation links
+            document.querySelector('header').addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                    var sectionId = event.target.getAttribute('href').substr(1);
+                    showSection(sectionId);
+                }
+            });
+
+            // Trigger animation on page load
+            document.body.classList.add('animate-in'); // Add animation class
+        });
+    </script>
+	<script>
+    function scrollToOrderNow() {
+        var orderSection = document.getElementById('order');
+        orderSection.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
